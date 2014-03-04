@@ -31,14 +31,14 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
     /**
      * @var FireGento_Logger_Helper_Data
      */
-    protected $helper;
+    protected $_helper;
 
     /**
      * Instantiate the helper
      */
     protected function _construct()
     {
-        $this->helper = Mage::helper('firegento_logger');
+        $this->_helper = Mage::helper('firegento_logger');
     }
 
     /**
@@ -120,7 +120,6 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
      */
     public function decorateSeverity($value, $row)
     {
-        $class = '';
         switch ($row->getSeverity()) {
             case Zend_Log::EMERG:
             case Zend_Log::ALERT:
@@ -128,9 +127,11 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
             case Zend_Log::ERR:
                 $class = 'grid-severity-critical';
                 break;
-            case Zend_Log::WARN:
             case Zend_Log::NOTICE:
             case Zend_Log::INFO:
+                $class = 'grid-severity-notice';
+                break;
+            case Zend_Log::WARN:
             case Zend_Log::DEBUG:
                 $class = 'grid-severity-minor';
                 break;
@@ -144,7 +145,7 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
     /**
      * Formats advanced info
      *
-     * @param string $value
+     * @param  string $value the logger entry value
      * @return string
      */
     public function decorateAdvancedInfo($value)
@@ -160,19 +161,21 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
     public function getSeverityOptions()
     {
         return array(
-            Zend_Log::EMERG => $this->helper->__('Emergency'),
-            Zend_Log::ALERT => $this->helper->__('Alert'),
-            Zend_Log::CRIT => $this->helper->__('Critical'),
-            Zend_Log::ERR => $this->helper->__('Error'),
-            Zend_Log::WARN => $this->helper->__('Warning'),
-            Zend_Log::NOTICE => $this->helper->__('Notice'),
-            Zend_Log::INFO => $this->helper->__('Info'),
-            Zend_Log::DEBUG => $this->helper->__('Debug'),
+            Zend_Log::EMERG => $this->_helper->__('Emergency'),
+            Zend_Log::ALERT => $this->_helper->__('Alert'),
+            Zend_Log::CRIT => $this->_helper->__('Critical'),
+            Zend_Log::ERR => $this->_helper->__('Error'),
+            Zend_Log::WARN => $this->_helper->__('Warning'),
+            Zend_Log::NOTICE => $this->_helper->__('Notice'),
+            Zend_Log::INFO => $this->_helper->__('Info'),
+            Zend_Log::DEBUG => $this->_helper->__('Debug'),
         );
     }
 
     /**
-     * @param $item FireGento_Logger_Model_Db_Entry
+     * Get the current row url
+     *
+     * @param FireGento_Logger_Model_Db_Entry $item the current selected item
      */
     public function getRowUrl($item)
     {

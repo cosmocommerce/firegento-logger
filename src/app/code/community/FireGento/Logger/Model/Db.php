@@ -82,7 +82,7 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
     /**
      * Returns log data in advanced format
      *
-     * @param FireGento_Logger_Model_Event $event
+     * @param  FireGento_Logger_Model_Event $event the event to log
      *
      * @return string
      */
@@ -139,8 +139,10 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
     }
 
     /**
-     * @param $rule
-     * @param $loggerEntry FireGento_Logger_Model_Db_Entry
+     * Return true if the rule matches.
+     *
+     * @param  array                           $rule        the rule to match
+     * @param  FireGento_Logger_Model_Db_Entry $loggerEntry the actual log entry
      * @return bool
      */
     protected function _matchRule($rule, $loggerEntry)
@@ -163,8 +165,10 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
     }
 
     /**
-     * @param $rule
-     * @param $loggerEntry FireGento_Logger_Model_Db_Entry
+     * This will send a notificatin if if there is a rule for that.
+     *
+     * @param array                           $rule        the rule to match
+     * @param FireGento_Logger_Model_Db_Entry $loggerEntry the actual log entry
      */
     protected function _sendNotification($rule, $loggerEntry)
     {

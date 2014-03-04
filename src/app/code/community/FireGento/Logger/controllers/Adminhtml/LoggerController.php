@@ -36,9 +36,13 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
     {
         $this->loadLayout();
         $this->_setActiveMenu('system/firegento_logger/grid_viewer');
+        $this->_title($this->__('View database log entries'));
         $this->renderLayout();
     }
 
+    /**
+     * Show one logger entry
+     */
     public function viewAction()
     {
         $this->loadLayout();
@@ -48,6 +52,8 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
     }
 
     /**
+     * Get the logger entry
+     *
      * @return FireGento_Logger_Model_Db_Entry
      */
     protected function _getLoggerEntry()
@@ -72,6 +78,7 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
     {
         $this->loadLayout();
         $this->_setActiveMenu('system/firegento_logger/live_viewer');
+        $this->_title($this->__('Live View'));
         $this->renderLayout();
     }
 
@@ -82,6 +89,7 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
     {
         $this->loadLayout();
         $this->_setActiveMenu('system/firegento_logger/report_viewer');
+        $this->_title($this->__('Failure Report View'));
         $this->renderLayout();
     }
 
