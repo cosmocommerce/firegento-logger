@@ -31,14 +31,14 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
     /**
      * @var FireGento_Logger_Helper_Data
      */
-    protected $_helper;
+    protected $helper;
 
     /**
      * Instantiate the helper
      */
     protected function _construct()
     {
-        $this->_helper = Mage::helper('firegento_logger');
+        $this->helper = Mage::helper('firegento_logger');
     }
 
     /**
@@ -160,14 +160,14 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
     public function getSeverityOptions()
     {
         return array(
-            Zend_Log::EMERG => $this->_helper->__('Emergency'),
-            Zend_Log::ALERT => $this->_helper->__('Alert'),
-            Zend_Log::CRIT => $this->_helper->__('Critical'),
-            Zend_Log::ERR => $this->_helper->__('Error'),
-            Zend_Log::WARN => $this->_helper->__('Warning'),
-            Zend_Log::NOTICE => $this->_helper->__('Notice'),
-            Zend_Log::INFO => $this->_helper->__('Info'),
-            Zend_Log::DEBUG => $this->_helper->__('Debug'),
+            Zend_Log::EMERG => $this->helper->__('Emergency'),
+            Zend_Log::ALERT => $this->helper->__('Alert'),
+            Zend_Log::CRIT => $this->helper->__('Critical'),
+            Zend_Log::ERR => $this->helper->__('Error'),
+            Zend_Log::WARN => $this->helper->__('Warning'),
+            Zend_Log::NOTICE => $this->helper->__('Notice'),
+            Zend_Log::INFO => $this->helper->__('Info'),
+            Zend_Log::DEBUG => $this->helper->__('Debug'),
         );
     }
 
